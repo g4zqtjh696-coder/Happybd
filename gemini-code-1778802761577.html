@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>عيد ميلاد سعيد فرح 🎀</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Dancing+Script:wght@700&family=El+Messiri:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d0415;
+      --bg2: #160724;
+      --rose: #e8396a;
+      --rose-l: #ff6b9d;
+      --gold: #f5c842;
+      --gold-s: #ffd97d;
+      --cream: #fff5e6;
+      --text: #ffe8f0;
+    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      background:var(--bg);
+      color:var(--text);
+      font-family:'El Messiri', sans-serif;
+      overflow-x:hidden;
+      direction:rtl;
+    }
+
+    /* ── STARS ── */
+    #stars{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;}
+    .star{
+      position:absolute;background:#fff;border-radius:50%;
+      animation:twinkle var(--d,3s) infinite alternate var(--dl,0s);
+    }
+    @keyframes twinkle{from{opacity:.1;transform:scale(.8)}to{opacity:1;transform:scale(1.3)}}
+
+    /* ── SPLASH (Updated for Audio) ── */
+    #splash{
+      position:fixed;inset:0;background:var(--bg);z-index:9999;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+      transition:opacity .9s ease,visibility .9s;
+      cursor: pointer;
+    }
+    #splash.gone{opacity:0;visibility:hidden;pointer-events:none;}
+    .splash-heart{font-size:5rem;animation:hb .8s ease-in-out infinite;}
+    .splash-txt{
+      font-size:1.4rem;color:var(--rose-l);opacity:.9;letter-spacing:1px;
+      background: rgba(232,57,106,0.15); padding: 0.8rem 2rem; border-radius: 30px;
+      border: 1px solid var(--rose);
+      animation: pulseBtn 2s infinite;
+    }
+    @keyframes pulseBtn{0%,100%{transform:scale(1)}50%{transform:scale(1.05); box-shadow: 0 0 20px rgba(232,57,106,0.4)}}
+    @keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+
+    /* ── CANVAS FIREWORKS ── */
+    #fw{position:fixed;inset:0;pointer-events:none;z-index:200;}
+
+    /* ── HEARTS RAIN ── */
+    #hr{position:fixed;inset:0;pointer-events:none;z-index:5;overflow:hidden;}
+    .fheart{
+      position:absolute;top:-60px;
+      animation:fallh linear infinite;
+    }
+    @keyframes fallh{to{transform:translateY(110vh) rotate(360deg);}}
+
+    /* ── SECTIONS BASE ── */
+    section{position:relative;z-index:1;padding: 4rem 1.5rem;}
+    .section-label{
+      font-size:clamp(1.4rem,3.5vw,2.2rem);
+      color:var(--gold);
+      text-align:center;
+      margin-bottom:2rem;
+      font-weight: 700;
+    }
+    .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease;}
+    .reveal.vis{opacity:1;transform:translateY(0);}
+
+    /* ═══════════════════════════════
+       HERO
+    ═══════════════════════════════ */
+    .hero{
+      min-height:100vh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;
+      background:radial-gradient(ellipse at center,#2d0540 0%,var(--bg) 70%);
+      overflow:hidden;
+    }
+    #balloons-c{position:absolute;inset:0;pointer-events:none;}
+    .balloon{position:absolute;animation:bfly var(--bd,7s) ease-in-out infinite var(--bde,0s);}
+    @keyframes bfly{
+      0%{transform:translateY(0) rotate(-4deg);opacity:.9;}
+      50%{transform:translateY(-65vh) rotate(5deg);opacity:1;}
+      100%{transform:translateY(-115vh) rotate(-2deg);opacity:0;}
+    }
+    .age-big{
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(7rem,25vw,14rem);
+      line-height:1;
+      color:var(--gold);
+      text-shadow:0 0 60px #f5c84255,0 0 120px #f5c84222;
+      animation:glow 3s ease-in-out infinite;
+      direction: ltr;
+    }
+    @keyframes glow{
+      0%,100%{transform:translateY(0);text-shadow:0 0 50px #f5c84266;}
+      50%{transform:translateY(-12px);text-shadow:0 0 90px #f5c842bb;}
+    }
+    .hero-title{
+      font-size:clamp(1.6rem,5vw,3rem);
+      color:var(--rose-l);
+      margin:1rem 0;
+      font-weight: 700;
+      animation:fup 1s ease .4s both;
+    }
+    .hero-sub{
+      font-size:clamp(1.1rem,2.5vw,1.4rem);
+      color:var(--cream);
+      opacity:.9;
+      line-height:1.8;
+      animation:fup 1s ease .7s both;
+    }
+    .hero-date{
+      margin-top:1.5rem;
+      font-size:clamp(.95rem,2vw,1.2rem);
+      color:var(--gold-s);
+      animation:fup 1s ease 1s both;
+      background: rgba(255,255,255,0.05);
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      border: 1px solid rgba(245,200,66,0.2);
+    }
+    @keyframes fup{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+    .scroll-arrow{
+      position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+      font-size:1.8rem;color:var(--rose-l);animation:bounce 2s infinite;
+    }
+    @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+    /* ═══════════════════════════════
+       CAKE
+    ═══════════════════════════════ */
+    .cake-sec{
+      min-height:100vh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background:radial-gradient(ellipse at 30% 60%,#1f052d 0%,var(--bg) 65%);
+    }
+    .cake-wrap{cursor:pointer;user-select:none; margin-top: 2rem;}
+    .candles-row{display:flex;justify-content:center;gap:14px;margin-bottom:4px;position:relative;z-index:5;}
+    .candle{display:flex;flex-direction:column;align-items:center;gap:0;}
+
+    .smoke-puff{
+      width:4px;height:0;margin-bottom:2px;
+      background:rgba(200,200,200,.55);border-radius:2px;
+      transition:none;
+    }
+    .smoke-puff.lit{animation:puff 1.2s ease-out forwards;height:35px;}
+    @keyframes puff{
+      0%{height:0;opacity:.8;transform:scaleX(1) translateY(0);}
+      60%{height:40px;opacity:.5;transform:scaleX(2.5) translateY(-5px);}
+      100%{height:50px;opacity:0;transform:scaleX(4) translateY(-15px);}
+    }
+
+    .flame{
+      width:13px;height:22px;
+      background:linear-gradient(to top,#ff6b00 0%,#ffdd00 60%,#fffde7 100%);
+      border-radius:50% 50% 30% 30%;
+      animation:flick .25s ease-in-out infinite alternate;
+      transform-origin:bottom center;
+      position:relative;
+      box-shadow:0 0 10px #ff990099,0 0 20px #ff990055;
+      transition:opacity .3s,transform .3s;
+    }
+    .flame::after{
+      content:'';position:absolute;top:3px;left:3px;
+      width:7px;height:11px;
+      background:rgba(255,255,255,.45);
+      border-radius:50%;
+    }
+    .flame.out{opacity:0;transform:scaleY(0);}
+    @keyframes flick{from{transform:scaleX(.8) skewX(-6deg);}to{transform:scaleX(1.15) skewX(6deg);}}
+
+    .c-body{width:11px;height:38px;border-radius:3px;}
+    .c-pink{background:linear-gradient(to right,#ff9ebf,#e91e8c,#ad1457);}
+    .c-gold{background:linear-gradient(to right,#ffe082,#f5c842,#c9a227);}
+
+    .cake{display:flex;flex-direction:column;align-items:center;width:220px;}
+    .layer{position:relative;border-radius:0;transition:transform .3s;}
+    .layer1{width:155px;height:52px;background:linear-gradient(135deg,#f48fb1,#e91e8c,#ad1457);border-radius:8px 8px 0 0;box-shadow:0 0 20px rgba(233,30,140,.4);}
+    .layer2{width:178px;height:58px;background:linear-gradient(135deg,#ffe082,#f5c842,#c9a227);box-shadow:0 0 15px rgba(245,200,66,.3);}
+    .layer3{width:210px;height:64px;background:linear-gradient(135deg,#f48fb1,#e91e8c,#ad1457);border-radius:0 0 18px 18px;box-shadow:0 10px 30px rgba(233,30,140,.5);}
+
+    .frost{position:absolute;top:-9px;left:0;right:0;display:flex;justify-content:space-around;padding:0 4px;}
+    .drip{width:14px;height:22px;background:rgba(255,255,255,.92);border-radius:0 0 50% 50%;}
+    .plate{width:245px;height:22px;background:linear-gradient(to bottom,#ddd,#bbb);border-radius:50%;box-shadow:0 6px 18px rgba(0,0,0,.35);}
+
+    .blow-hint{margin-top:2.5rem;color:var(--rose-l);font-size:1.2rem;animation:pulse 1.8s infinite;}
+    @keyframes pulse{0%,100%{opacity:.6}50%{opacity:1}}
+    .wish-msg{
+      margin-top:1.5rem;font-size:1.4rem;color:var(--gold);text-align:center;
+      max-width:420px;opacity:0;transform:scale(.9);transition:all .6s cubic-bezier(.34,1.56,.64,1);
+    }
+    .wish-msg.show{opacity:1;transform:scale(1);}
+    
+    .cake-joke {
+      margin-top: 1rem;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      max-width: 80%;
+    }
+
+    /* ═══════════════════════════════
+       IG DM SECTION 
+    ═══════════════════════════════ */
+    .ig-sec{
+      display:flex;flex-direction:column;align-items:center;
+      background:linear-gradient(180deg,var(--bg) 0%,#0a0018 100%);
+    }
+    .phone{
+      width:min(360px,92vw);
+      background: linear-gradient(180deg, #b0004c 0%, #88003a 100%);
+      border-radius:38px;
+      border:4px solid #111;
+      overflow:hidden;
+      box-shadow:0 35px 70px rgba(0,0,0,.85),0 0 80px rgba(232,57,106,.15);
+      position: relative;
+    }
+    .phone::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,0.05) 2px, transparent 2px);
+      background-size: 30px 30px;
+      pointer-events: none;
+    }
+
+    .ph-top-bar{
+      background:#000;
+      padding:1rem 1.2rem;
+      display:flex;align-items:center;gap:.8rem;
+      border-bottom:1px solid #222;
+      direction:ltr;
+      position: relative;
+      z-index: 2;
+    }
+    .back-arrow{color:#fff;font-size:1.3rem;}
+    .ph-avatar{
+      width:40px;height:40px;border-radius:50%;
+      background: #ccc;
+      display:flex;align-items:center;justify-content:center;
+      flex-shrink:0; overflow: hidden;
+      border: 2px solid #222;
+    }
+    .ph-avatar-inner {
+      width: 100%; height: 100%;
+      background: linear-gradient(45deg, #f5c842, #ff4d8d);
+    }
+    .ph-info { display: flex; flex-direction: column; }
+    .ph-name{color:#fff;font-weight:700;font-size:1rem;font-family:system-ui; display: flex; align-items: center; gap: 4px;}
+    .ph-active{color:#aaa;font-size:.7rem;font-family:system-ui;}
+    .ph-actions{margin-left:auto;display:flex;gap:1.2rem;color:#fff;font-size:1.2rem;}
+    
+    .ph-msgs{
+      padding:1.5rem 1rem;
+      min-height:350px;
+      display:flex;flex-direction:column;gap:.5rem;
+      direction:ltr;
+      overflow-y:auto;
+      position: relative;
+      z-index: 2;
+    }
+    .time-divider{
+      align-self:center;
+      background: rgba(0,0,0,0.3);
+      color:#fff;font-size:.65rem;
+      font-family:system-ui;
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
+      margin: 0.5rem 0;
+      font-weight: 600;
+    }
+    .msg{
+      max-width:78%;
+      padding:.6rem .9rem;
+      border-radius:20px;
+      font-size:.9rem;
+      line-height:1.4;
+      opacity:0;
+      transform:scale(.85) translateY(8px);
+      transition:opacity .35s ease,transform .35s ease;
+      font-family:system-ui;
+      position: relative;
+    }
+    .msg.show{opacity:1;transform:scale(1) translateY(0);}
+    .msg.sent{
+      background:#4a0022; 
+      color:#fff;align-self:flex-end;
+      border-bottom-right-radius:4px;
+    }
+    .msg.recv{
+      background:rgba(255,255,255,0.15); 
+      color:#fff;
+      align-self:flex-start;
+      border-bottom-left-radius:4px;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    
+    .typing{
+      align-self:flex-start;
+      background:rgba(255,255,255,0.15);
+      padding:.5rem .9rem;
+      border-radius:18px 18px 18px 4px;
+      color:#fff;font-size:.85rem;
+      opacity:0;
+      transition:opacity .3s;
+    }
+    .typing.show{opacity:1;}
+    .ph-footer{
+      background:#000;
+      padding:.7rem 1.1rem;
+      display:flex;align-items:center;gap:.8rem;
+      border-top:1px solid #222;
+      direction:ltr;
+      position: relative;
+      z-index: 2;
+    }
+    .ph-input{
+      flex:1;background:#222;
+      border-radius:22px;
+      padding:.5rem 1rem;
+      color:#888;font-size:.85rem;
+      font-family:system-ui;
+    }
+    .story-note{
+      max-width:480px;text-align:center;
+      margin-top:2rem;
+      font-size:1.2rem;color:var(--rose-l);
+      line-height:1.8;
+      background: rgba(232,57,106,0.05);
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(232,57,106,0.1);
+    }
+
+    /* ═══════════════════════════════
+       MAP
+    ═══════════════════════════════ */
+    .map-sec{
+      display:flex;flex-direction:column;align-items:center;
+      background:radial-gradient(ellipse at 70% 50%,#15082a 0%,var(--bg) 70%);
+    }
+    .map-wrap{position:relative;width:min(480px,92vw);}
+    .map-svg{width:100%;filter:drop-shadow(0 0 25px rgba(232,57,106,.25));}
+    .map-caption{margin-top:1.2rem;text-align:center;}
+    .km-pill{
+      display:inline-block;
+      background:linear-gradient(135deg,var(--rose),#ff4d8d);
+      color:#fff;
+      padding:.5rem 1.5rem;border-radius:30px;
+      font-size:1.1rem;margin-top:.5rem;
+      box-shadow:0 4px 15px rgba(232,57,106,.4);
+      font-weight: bold;
+      direction: ltr;
+    }
+    .map-quote{
+      max-width:480px;text-align:center;
+      margin-top:2rem;
+      font-size:1.2rem;color:var(--cream);
+      line-height:2;
+    }
+
+    /* ═══════════════════════════════
+       MYSTERY GIFT (CRYPTIC DEV VIBE)
+    ═══════════════════════════════ */
+    .gift-sec{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background:radial-gradient(ellipse at center,#1a0a1e 0%,var(--bg) 70%);
+      padding-bottom: 6rem;
+    }
+    .mystery-wrap{
+      position:relative;
+      width:200px;height:210px;
+      cursor:pointer;perspective:400px;
+    }
+    .box-glow{
+      position:absolute;inset:-25px;border-radius:50%;
+      background:radial-gradient(circle,rgba(245,200,66,.2) 0%,transparent 70%);
+      animation:giftglow 2s ease-in-out infinite;
+    }
+    @keyframes giftglow{0%,100%{transform:scale(1);opacity:.5}50%{transform:scale(1.25);opacity:1}}
+    .box-body{
+      width:182px;height:145px;
+      background:linear-gradient(135deg,#1a237e,#283593,#1565c0);
+      border-radius:0 0 12px 12px;
+      position:absolute;bottom:0;left:9px;
+      box-shadow:0 12px 35px rgba(26,35,126,.55);
+      border:2px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .rib-h{
+      position:absolute;top:50%;transform:translateY(-50%);
+      left:0;right:0;height:28px;
+      background:linear-gradient(90deg,#f5c842,#ffd97d,#f5c842);
+    }
+    .rib-v{
+      position:absolute;left:50%;transform:translateX(-50%);
+      top:0;bottom:0;width:28px;
+      background:linear-gradient(180deg,#f5c842,#ffd97d,#f5c842);
+    }
+    .lock{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      font-size:2.8rem;z-index:4;
+      transition:opacity .4s,transform .4s;
+    }
+    .box-lid{
+      width:198px;height:58px;
+      background:linear-gradient(135deg,#1565c0,#1976d2,#2196f3);
+      border-radius:12px 12px 0 0;
+      position:absolute;top:12px;left:1px;
+      border:2px solid rgba(255,255,255,.12);
+      transform-origin:top center;
+      transition:transform .9s cubic-bezier(.34,1.56,.64,1);
+      z-index:3;
+    }
+    .box-lid.open{transform:rotateX(-115deg) translateY(-18px);}
+    .lid-rib{
+      position:absolute;left:50%;transform:translateX(-50%);
+      width:28px;top:0;bottom:0;
+      background:linear-gradient(180deg,#f5c842,#ffd97d,#f5c842);
+    }
+    .bow-top{
+      position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+      font-size:2.2rem;z-index:5;
+    }
+    .hint-area{margin-top:2rem;text-align:center;max-width:450px;}
+    .hint-title{
+      color:var(--gold-s);
+      font-size:1.4rem;
+      margin-bottom:1.5rem;
+      animation:pulse 2s infinite;
+    }
+    .clues{
+      display:none;
+      flex-direction:column;
+      gap:.6rem;
+      background: rgba(0,0,0,0.6);
+      border: 1px solid rgba(245,200,66,.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      font-family: monospace;
+      text-align: left;
+      direction: ltr;
+    }
+    .clue{
+      font-size: 0.95rem;
+      color: #00ff41;
+      opacity:0;
+      transform:translateY(10px);
+      transition:opacity .5s ease,transform .5s ease;
+    }
+    .clue.vis{opacity:1;transform:translateY(0);}
+
+    /* ═══════════════════════════════
+       LOVE / COUNTER
+    ═══════════════════════════════ */
+    .love-sec{
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      background:radial-gradient(ellipse at center,#200525 0%,var(--bg) 80%);
+    }
+    .days-box{
+      background:linear-gradient(135deg,rgba(232,57,106,.08),rgba(245,200,66,.08));
+      border:1px solid rgba(245,200,66,.28);
+      border-radius:24px;
+      padding:2.5rem 3rem;
+      text-align:center;
+      box-shadow:0 0 40px rgba(245,200,66,.06);
+    }
+    .days-n{
+      font-family:'Dancing Script',cursive;
+      font-size:clamp(4rem,15vw,8rem);
+      color:var(--gold);
+      text-shadow:0 0 30px rgba(245,200,66,.5);
+      line-height:1;
+      direction: ltr;
+    }
+    .days-lbl{color:var(--text);font-size:1.2rem;opacity:.9;margin-top:.5rem;}
+
+    /* ═══════════════════════════════
+       FINAL
+    ═══════════════════════════════ */
+    .final-sec{
+      min-height:90vh;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;
+      text-align:center;
+      background:radial-gradient(ellipse at center,#2d0540 0%,var(--bg) 65%);
+    }
+    .final-txt{
+      max-width:600px;
+      font-size:clamp(1.2rem,3vw,1.6rem);
+      line-height:2.2;
+      color:var(--cream);
+    }
+    .final-sig{
+      margin-top:3rem;
+      font-family:'Dancing Script',cursive;
+      font-size:2.5rem;
+      color:var(--rose-l);
+    }
+    .footer-note{
+      margin-top:4rem;
+      color:var(--text);opacity:.4;
+      font-size:.9rem;
+    }
+
+    .sep{
+      text-align:center;
+      font-size:1.8rem;
+      padding:1rem;
+      opacity:.3;
+      z-index:1;
+      position:relative;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bg-music" loop>
+  <source src="1.mp3" type="audio/mpeg">
+</audio>
+
+<div id="stars"></div>
+<canvas id="fw"></canvas>
+<div id="hr"></div>
+
+<div id="splash" onclick="startExperience()">
+  <div class="splash-heart">❤️</div>
+  <div class="splash-txt">كليكي هنا باش نبداو 👆</div>
+</div>
+
+<section class="hero">
+  <div id="balloons-c"></div>
+  <div class="age-big">20</div>
+  <div class="hero-title">عيد ميلاد سعيد فرح 🎀</div>
+  <div class="hero-sub">
+    15 ماي 2006<br>
+    النهار لي تزادت فيه أحسن حاجة فحياتي 💝
+  </div>
+  <div class="hero-date">
+    عشرين عام... كبرت البنيتة ديالي ✨
+  </div>
+  <div class="scroll-arrow">↓</div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="cake-sec">
+  <div class="section-label reveal">🎂 وقت الأمنيات</div>
+
+  <div class="cake-wrap reveal" id="cake-wrap" onclick="blowCandles()">
+    <div class="candles-row" id="candles-row"></div>
+    <div class="cake">
+      <div class="layer layer1">
+        <div class="frost"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      </div>
+      <div class="layer layer2">
+        <div class="frost"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      </div>
+      <div class="layer layer3">
+        <div class="frost"><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div><div class="drip"></div></div>
+      </div>
+      <div class="plate"></div>
+    </div>
+  </div>
+
+  <div class="blow-hint reveal" id="blow-hint">👆 كليكي الكيكة باش تنفخي الشمعة</div>
+  <div class="cake-joke reveal">حيت 551 كم خلاتني مانقدرش نجيب كيكة حقيقية، صايبت ليك هادي بالكود 😅</div>
+  
+  <div class="wish-msg" id="wish-msg">
+    🌟 تمنيتي شي أمنية فرح؟ 🌟<br>
+    <span style="font-size:1.1rem;color:var(--cream);">يا ربي يحقق ليك كاع داكشي لي فخاطرك 🌸</span>
+  </div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="ig-sec">
+  <div class="section-label reveal">📱 كيفاش بدات القصة</div>
+
+  <div class="phone reveal" id="ig-phone">
+    <div class="ph-top-bar">
+      <span class="back-arrow">‹</span>
+      <div class="ph-avatar"><div class="ph-avatar-inner"></div></div>
+      <div class="ph-info">
+        <div class="ph-name">Faroooh 🎀</div>
+        <div class="ph-active">Faroooh295</div>
+      </div>
+      <div class="ph-actions">📞 📹</div>
+    </div>
+
+    <div class="ph-msgs" id="ph-msgs"></div>
+
+    <div class="ph-footer">
+      <div class="ph-input">Votre message...</div>
+      <div style="color:#fff; opacity:0.7; font-size:1.2rem;">🎤 🖼️</div>
+    </div>
+  </div>
+
+  <div class="story-note reveal">
+    نهار 20 ماي... 5 أيام مورا عيد ميلادك.<br>
+    بديناها بـ <span style="color:#fff">"سلام ختي"</span> و سولتك على القراية لِأنّني كنت كنفكر فالهندسة المعمارية 🏛️، وصدقت طايح فالحب ديالك.<br>
+    <span style="font-size:1rem; opacity:0.8;">شكون كان كيسحاب ديك الهضرة غاتولي هي كولشي؟ ❤️</span>
+  </div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="map-sec">
+  <div class="section-label reveal">✈️ المسافة غير رقم</div>
+
+  <div class="map-wrap reveal">
+    <svg class="map-svg" viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="mg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:#1e0838"/>
+          <stop offset="100%" style="stop-color:#100020"/>
+        </linearGradient>
+        <radialGradient id="cityglow-r" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" style="stop-color:#e8396a;stop-opacity:0.6"/>
+          <stop offset="100%" style="stop-color:#e8396a;stop-opacity:0"/>
+        </radialGradient>
+        <filter id="fg"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+
+      <path d="M 95,28 L 175,22 L 240,28 L 310,52 L 330,80 L 330,115 L 310,148 L 298,178 L 285,205 L 270,240 L 255,280 L 235,320 L 218,358 L 200,375 L 175,368 L 148,352 L 118,328 L 92,298 L 72,268 L 52,235 L 38,200 L 32,165 L 35,128 L 42,95 L 58,65 Z" fill="url(#mg)" stroke="rgba(232,57,106,0.3)" stroke-width="2"/>
+
+      <circle cx="168" cy="90" r="25" fill="url(#cityglow-r)">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="168" cy="90" r="6" fill="#e8396a" filter="url(#fg)"/>
+      <circle cx="168" cy="90" r="3" fill="#fff"/>
+      <text x="185" y="86" fill="#f5c842" font-size="14" font-weight="bold">الرباط</text>
+      <text x="185" y="105" fill="#fff" font-size="12" opacity="0.8">أنا 👨‍💻</text>
+
+      <circle cx="112" cy="248" r="25" fill="url(#cityglow-r)">
+        <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="112" cy="248" r="6" fill="#ff6b9d" filter="url(#fg)"/>
+      <circle cx="112" cy="248" r="3" fill="#fff"/>
+      <text x="128" y="244" fill="#f5c842" font-size="14" font-weight="bold">أكادير</text>
+      <text x="128" y="263" fill="#fff" font-size="12" opacity="0.8">نتي 🎀</text>
+
+      <path id="fp" d="M 168,90 C 100,140 90,180 112,248" fill="none" stroke="rgba(245,200,66,0.3)" stroke-width="3" stroke-dasharray="8,6"/>
+      <path d="M 168,90 C 100,140 90,180 112,248" fill="none" stroke="rgba(245,200,66,1)" stroke-width="3" stroke-dasharray="15,200" stroke-linecap="round">
+        <animate attributeName="stroke-dashoffset" from="0" to="-215" dur="2.5s" repeatCount="indefinite"/>
+      </path>
+
+      <text id="plane-icon" font-size="24" text-anchor="middle">✈️</text>
+    </svg>
+
+    <div class="map-caption">
+      <span class="km-pill">551 KM ❤️</span>
+    </div>
+  </div>
+
+  <div class="map-quote reveal">
+    551 كيلومتر؟ مسافة طويلة للناس،<br>
+    ولكن بالنسبة ليا غير رقم.<br>
+    طيارة ولا تران ولا حتا على رجليا... <br>
+    <span style="color:var(--rose-l); font-weight:bold;">غانجي غانجي إن شاء الله 💪❤️</span>
+  </div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="gift-sec">
+  <div class="section-label reveal">📟 System Alert...</div>
+
+  <div class="mystery-wrap reveal" id="gift-box" onclick="openGift()">
+    <div class="box-glow"></div>
+    <div class="box-lid" id="box-lid">
+      <div class="lid-rib"></div>
+      <div class="bow-top">🎀</div>
+    </div>
+    <div class="box-body">
+      <div class="rib-h"></div>
+      <div class="rib-v"></div>
+      <div class="lock" id="lock">🔒</div>
+    </div>
+  </div>
+
+  <div class="hint-area reveal">
+    <div class="hint-title" id="hint-title">كليكي باش نفكو الشفرة 👆</div>
+    <div class="clues" id="clues">
+      <div class="clue">> SYS.MSG: DIGITAL_CAKE_IS_NOT_ENOUGH</div>
+      <div class="clue">> TARGET_LOC: 30°25'N 9°36'W</div>
+      <div class="clue">> STATUS: PHYSICAL_ASSET_DEPLOYED</div>
+      <div class="clue">> OPERATION: "JOY"</div>
+      <div class="clue" style="color:#f5c842; font-weight:bold;">> ETA: ██████ (ENCRYPTED) 👀</div>
+    </div>
+  </div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="love-sec">
+  <div class="section-label reveal">⏳ شحال داز على أول هضرة؟</div>
+  <div class="days-box reveal">
+    <div class="days-n" id="days-n">0</div>
+    <div class="days-lbl">يوم ديال الضحك، الحب، والميمز ✨</div>
+  </div>
+</section>
+
+<div class="sep">✦ ✦ ✦</div>
+
+<section class="final-sec">
+  <div class="reveal" style="font-size:4rem;margin-bottom:1.5rem;">💌</div>
+
+  <div class="final-txt reveal">
+    حيت أنا ديفلوبور، ماكانش ممكن نصيفط ليك غير ميساج عادي.<br>
+    هاد السيت تصاوب بسهر الليل وبزاف ديال الحب،<br>
+    غير باش نرسم ديك الابتسامة فوجهك فرح.<br><br>
+    من نهار 20 ماي، دخلتي لحياتي وبدلتيها.<br>
+    كل نهار معاك كنزيد نتأكد بلي نتي أحسن حاجة وقعات ليا.<br><br>
+    <span style="color:var(--gold); font-size:1.2em; font-weight:bold;">عيد ميلاد سعيد يا عمري 🌸</span><br>
+    الله يخليك ليا، و يخلينا ديما مجموعين.
+  </div>
+
+  <div class="final-sig reveal">كنبغيك — فرح ديالي ❤️</div>
+
+  <div class="footer-note reveal">
+    Made with ❤️ in Rabat (by a guy who really misses you)
+  </div>
+</section>
+
+<script>
+/* ── AUDIO INITIALIZATION ── */
+function startExperience() {
+  const bgMusic = document.getElementById('bg-music');
+  bgMusic.volume = 0.5; // Optional: lower volume a bit so it's not too loud
+  bgMusic.play().catch(e => console.log("Audio play failed:", e));
+  
+  document.getElementById('splash').classList.add('gone');
+  setTimeout(launchFireworks, 400);
+}
+
+/* ── STARS ── */
+const starsC = document.getElementById('stars');
+for(let i=0;i<120;i++){
+  const s=document.createElement('div');
+  s.className='star';
+  const sz=Math.random()*2.5+0.8;
+  s.style.cssText=`width:${sz}px;height:${sz}px;top:${Math.random()*100}%;left:${Math.random()*100}%;--d:${Math.random()*3+2}s;--dl:${Math.random()*4}s;`;
+  starsC.appendChild(s);
+}
+
+/* ── BALLOONS ── */
+const BC=document.getElementById('balloons-c');
+['🎈','🎀','💕','🌸','✨','🎊','💖'].forEach((em,i)=>{
+  const b=document.createElement('div');
+  b.className='balloon';
+  b.textContent=em;
+  b.style.cssText=`left:${10+i*12}%;bottom:-60px;font-size:${2.5+Math.random()}rem;--bd:${5+Math.random()*4}s;--bde:${Math.random()*2}s;`;
+  BC.appendChild(b);
+});
+
+/* ── FIREWORKS ── */
+const fw=document.getElementById('fw');
+const fwCtx=fw.getContext('2d');
+const resize=()=>{fw.width=innerWidth;fw.height=innerHeight;};
+resize();addEventListener('resize',resize);
+
+let particles=[],fwActive=false;
+const fwColors=['#e8396a','#f5c842','#ff6b9d','#ffffff'];
+
+function spark(x,y,big=false){
+  const n=big?80:50;
+  for(let i=0;i<n;i++){
+    const a=(i/n)*Math.PI*2;
+    const sp=(big?2.5:1.5)+Math.random()*(big?6:4);
+    particles.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,
+      c:fwColors[Math.floor(Math.random()*fwColors.length)],
+      l:1,sz:big?2.5+Math.random()*3:1.5+Math.random()*2});
+  }
+}
+
+function fwLoop(){
+  if(!fwActive&&!particles.length)return;
+  fwCtx.clearRect(0,0,fw.width,fw.height);
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+    p.x+=p.vx;p.y+=p.vy;p.vy+=0.07;p.vx*=0.985;p.l-=0.016;
+    if(p.l<=0){particles.splice(i,1);continue;}
+    fwCtx.globalAlpha=p.l;fwCtx.fillStyle=p.c;
+    fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.sz,0,Math.PI*2);fwCtx.fill();
+  }
+  fwCtx.globalAlpha=1;
+  requestAnimationFrame(fwLoop);
+}
+
+function launchFireworks(){
+  fwActive=true;fwLoop();
+  let n=0;
+  const iv=setInterval(()=>{
+    spark(Math.random()*innerWidth,Math.random()*innerHeight*.6,true);
+    if(++n>10)clearInterval(iv);
+  },300);
+  setTimeout(()=>{fwActive=false;},6000);
+}
+function miniFW(){
+  fwActive=true;fwLoop();
+  for(let j=0;j<4;j++)setTimeout(()=>spark(Math.random()*innerWidth,Math.random()*innerHeight*.5),j*250);
+}
+
+/* ── CAKE ── */
+const CR=document.getElementById('candles-row');
+const cCol=['c-pink','c-gold','c-pink','c-gold','c-pink'];
+for(let i=0;i<5;i++){
+  const c=document.createElement('div');
+  c.className='candle';
+  c.innerHTML=`<div class="smoke-puff" id="sp${i}"></div><div class="flame" id="fl${i}"></div><div class="c-body ${cCol[i]}"></div>`;
+  CR.appendChild(c);
+}
+
+let blown=false;
+function blowCandles(){
+  if(blown)return;
+  blown=true;
+  for(let i=0;i<5;i++){
+    setTimeout(()=>{
+      document.getElementById('fl'+i).classList.add('out');
+      document.getElementById('sp'+i).classList.add('lit');
+    },i*150);
+  }
+  setTimeout(()=>{
+    document.getElementById('blow-hint').style.display='none';
+    document.getElementById('wish-msg').classList.add('show');
+    miniFW();
+  },1200);
+}
+
+/* ── IG DM MESSAGES (EXACT SCREENSHOT MATCH) ── */
+const igMessages=[
+  {type:'time', text:'20 MAI À 13:55', delay: 300},
+  {type:'sent', text:'Salam khti 🙏', delay:800},
+  {type:'sent', text:'chft whd comment dylk wla l archi b 5 mlion 😅', delay:2000},
+  {type:'sent', text:'Bghit nswlk — htch ta ana bghit ndirha 🏛️', delay:3500},
+  {type:'sent', text:'W lqit gha l uir 9 mlyion 😭😭', delay:5000},
+  {type:'time', text:'20 MAI À 19:54', delay: 6500},
+  {type:'typing', delay: 7000},
+  {type:'recv', text:'سلام اخويا 😀', delay: 8500},
+  {type:'recv', text:'هاد لمدرسة لي كانقري فيها سميتها<br>Universiapolis 👍', delay: 10000}
+];
+
+let igStarted=false;
+function runIgMsgs(){
+  if(igStarted)return;
+  igStarted=true;
+  const c=document.getElementById('ph-msgs');
+  igMessages.forEach(m=>{
+    setTimeout(()=>{
+      if(m.type==='time') {
+        const d=document.createElement('div');
+        d.className='time-divider';
+        d.textContent=m.text;
+        c.appendChild(d);
+      } else if(m.type==='typing'){
+        const t=document.createElement('div');
+        t.className='typing';
+        t.textContent='● ● ●';
+        c.appendChild(t);
+        requestAnimationFrame(()=>t.classList.add('show'));
+        setTimeout(()=>t.remove(),1400);
+      } else {
+        const el=document.createElement('div');
+        el.className=`msg ${m.type}`;
+        el.innerHTML=m.text;
+        c.appendChild(el);
+        requestAnimationFrame(()=>el.classList.add('show'));
+        c.scrollTop=c.scrollHeight;
+      }
+    },m.delay);
+  });
+}
+
+/* ── PLANE ANIMATION ── */
+(function animatePlane(){
+  const pathEl=document.getElementById('fp');
+  const planeEl=document.getElementById('plane-icon');
+  if(!pathEl||!planeEl)return;
+  const total=pathEl.getTotalLength();
+  let p=0;
+  function step(){
+    p=(p+0.0025)%1;
+    const pt=pathEl.getPointAtLength(p*total);
+    const pt2=pathEl.getPointAtLength(Math.min((p+0.01)*total,total));
+    const angle=Math.atan2(pt2.y-pt.y,pt2.x-pt.x)*180/Math.PI;
+    planeEl.setAttribute('transform',`translate(${pt.x},${pt.y}) rotate(${angle+90})`);
+    requestAnimationFrame(step);
+  }
+  step();
+})();
+
+/* ── COUNTER ── */
+function calcDays(){
+  const start=new Date('2024-05-20'); /* Adjust the year if it was 2023 */
+  const now=new Date();
+  const diff=Math.max(0,Math.floor((now-start)/(1000*60*60*24)));
+  const el=document.getElementById('days-n');
+  let cur=0;
+  const step=Math.ceil(diff/60);
+  const iv=setInterval(()=>{
+    cur=Math.min(cur+step,diff);
+    el.textContent=cur;
+    if(cur>=diff)clearInterval(iv);
+  },30);
+}
+
+/* ── MYSTERY GIFT (CRYPTIC REVEAL) ── */
+let giftOpen=false;
+function openGift(){
+  if(giftOpen)return;
+  giftOpen=true;
+  document.getElementById('box-lid').classList.add('open');
+  setTimeout(()=>{document.getElementById('lock').style.opacity='0';},400);
+  document.getElementById('hint-title').textContent='🔓 ACCESS GRANTED';
+  
+  const cl=document.getElementById('clues');
+  cl.style.display='flex';
+  cl.querySelectorAll('.clue').forEach((c,i)=>{
+    setTimeout(()=>c.classList.add('vis'),i*600+300); // Slower reveal for dramatic effect
+  });
+  miniFW();
+}
+
+/* ── SCROLL OBSERVER ── */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('vis');
+      if(e.target.id==='ig-phone') runIgMsgs();
+      if(e.target.classList.contains('days-box')) calcDays();
+    }
+  });
+},{threshold:0.15});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
